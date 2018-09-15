@@ -1,0 +1,11 @@
+5.lst = [2,0,3,6,9]
+  sorted(lst)
+  
+6.l = [2,3,1,2,4,3]
+  l = set(l)
+  
+7.str = "aasdebbcaa"
+  resoult={}
+  for i in str:
+    resoult[i]=str.count(i)
+  print(resoult)
