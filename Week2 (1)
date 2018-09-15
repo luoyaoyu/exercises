@@ -1,0 +1,10 @@
+1."Hello world".replace("l","*")
+
+2.("Good".lower()) * 3    ||    ("Good" * 3).lower()
+
+3."Fh1qoWe92QbvC".swapcase()
+
+4.import re
+  str = "Fh1qoWe92QbvC"
+  str2 = re.sub("\D","",str)
+  print(str2)
