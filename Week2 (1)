@@ -1,10 +1,73 @@
 1."Hello world".replace("l","*")
 
+
 2.("Good".lower()) * 3    ||    ("Good" * 3).lower()
 
+
 3."Fh1qoWe92QbvC".swapcase()
+
 
 4.import re
   str = "Fh1qoWe92QbvC"
   str2 = re.sub("\D","",str)
   print(str2)
+5.lst = [2,0,3,6,9]
+  sorted(lst)
+ 
+ 
+6.l = [2,3,1,2,4,3]
+  l = set(l)
+ 
+ 
+7.str = "aasdebbcaa"
+  resoult={}
+  for i in str:
+    resoult[i]=str.count(i)
+  print(resoult)
+  
+  
+8.def number(str):
+	num1 = 0
+	num2 = 0
+	num3 = 0
+	num4 = 0
+	for a in str:
+		if a.isdigit() == True:
+			num1 += 1
+		elif a.isalpha() == True:
+			num2 += 1
+		elif a.isspace() == True:
+			num3 += 1
+		else:
+			num4 +=1
+	print("数字有%d个"%num1)
+	print("字母有%d个"%num2)
+	print("空格有%d个"%num3)
+	print("其它有%d个"%num4)
+
+
+9.def check(str):
+    b = str.replace(' ','')
+    print(b)
+  
+  
+10.import random
+
+def check_number(b):
+    a = random.randint(0,10)
+    while True:
+        if b == a:
+            print("哇塞，猜对了哎，恭喜你！")
+            break
+        elif b > a:
+            print("大了大了！")
+            check_number(int(input("再猜猜看：")))
+            break
+            
+        else:
+            print("小了小了！")
+            check_number(int(input("再猜猜看：")))
+            break
+            
+
+check_number(int(input("快来猜猜看：")))
