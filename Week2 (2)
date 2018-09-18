@@ -1,11 +1,26 @@
-5.lst = [2,0,3,6,9]
-  sorted(lst)
-  
-6.l = [2,3,1,2,4,3]
-  l = set(l)
-  
-7.str = "aasdebbcaa"
-  resoult={}
-  for i in str:
-    resoult[i]=str.count(i)
-  print(resoult)
+1.for i in range(1, 10):
+    for j in range(1, i+1):
+        print('{}x{}={}\t'.format(i, j, i*j), end='')
+    print()
+    
+2.def FizzBuzz():
+    for a in range(0,100):
+        if a % 3 == 0:
+            print("Fizz")
+        elif a % 5 == 0:
+            print("Buzz")
+        elif a % 3 == 0 and a % 5 == 0:
+            print("FizzBuzz")
+        else:
+            print(a,"这个数不符合条件")
+
+FizzBuzz()
+
+3.def Fibonacci():
+    a=0
+    b=1
+    while b < 100:
+        print(b)
+        a, b = b, a+b
+
+Fibonacci()
