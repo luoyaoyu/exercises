@@ -1,0 +1,75 @@
+1.
+import random
+import string
+
+user_list = []
+
+def login():
+    User_name = input("请您设置您的用户名：")
+    User_password = int(input("请您设置您想取几位数的密码："))
+
+    for i in range(User_password):
+        Your_pass = random.choice(string.ascii_letters + string.digits)
+        user_list.append(Your_pass)
+        Pass_result = "".join(user_list)
+
+    print(f"您设置的用户名为：{User_name}, 系统为您随机产生的密码为：{Pass_result}")
+
+login()
+
+
+2.
+def rightorleft(lst,a):
+    if a in lst:
+        if lst.index(a) < (len(lst)-1)/2:
+            print("该数在列表左半边")
+        elif lst.index(a) == (len(lst)-1)/2:
+            print("该数在列表中间位置")
+        else:
+            print("该数在列表右半边")
+    else:
+        print("列表中没有该数")
+
+rightorleft([1,2,3,5,6],3)
+rightorleft([1,2,3,4,5,6],3)
+rightorleft([1,2,3,4,5,6],4)
+
+
+3.
+def Text11():
+    num = [];
+    for i in range(2, 101):
+        for j in range(2, i):
+            if (i % j == 0):
+                break
+        else:
+            num.append(i)
+    print(num)
+
+Text11()
+
+
+4.
+x = 0
+
+y = 0
+
+def add(x,y):
+    return x+y
+
+def sub(x,y):
+    return x-y
+
+def mul(x,y):
+    return x*y
+
+def div(x,y):
+    return x/y
+
+
+
+5.
+def findmin(lst):
+    print("min values element:",min(lst))
+
+findmin([5,6,8,1,2])
