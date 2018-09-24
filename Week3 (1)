@@ -1,0 +1,128 @@
+1.
+def getuser(name,age):
+    age1 = (100-age) + 2018
+    print(name,"在",age1,"年为100岁")
+
+
+2.
+def check():
+    num = int(input("请输入一个数："))
+    if num % 2 == 1:
+        print("你输入的是奇数！")
+    else:
+        print("你输入的是偶数！")
+
+check()
+
+
+3.1
+def findnull(lst):
+    if all(lst) == False:
+        print("列表中有空元素")
+    else:
+        print("列表中没有空元素")
+
+findnull([1,2,3,''])
+
+3.2
+def Findnull(lst):
+    flag = 0
+    for i in lst:
+        if bool(i) ==  False:
+            flag = 1
+    if flag == 1:
+        print("列表中有空元素")
+    else:
+        print("列表中没有空元素")
+
+Findnull([1,2,3,'',[]])
+
+3.3
+def FindNull(lst):
+    i = 0
+    flag = 0
+    while i < len(lst):
+        if bool(a for a in lst) == False:
+            flag = 1
+    if flag == 1:
+        print("列表中有空元素")
+    else:
+        print("列表中没有空元素")
+
+FindNull([1,2,3,[]])
+
+
+4.1
+def Text(list1):
+    intlist2 = []
+    for i in list1:
+        a = i*i
+        intlist2.append(a)
+    print(intlist2)
+
+Text([5,6,7,8])
+
+4.2
+def Text2(list1):
+    list2 = list(map(lambda x: x**2, list1))
+    print(list2)
+
+Text2([5,6,7,8])
+
+
+5.
+from functools import reduce
+def sum(list1):
+    print(reduce(lambda x, y: x + y, list1))
+
+sum([4,5,6])
+
+
+6.
+def Text5(list1):
+    list2 = [x**2 for x in list1]
+    print(list2)
+
+Text5([5,6,7,8])
+
+
+7.
+def checktwolist(list1, list2):
+    print(set(list1).intersection(list2))
+
+checktwolist([1,5,7,6,9],[1,2,3,4,5,6])
+
+
+8.1
+def findMax(a,b,c):
+    temp = 0
+    if a > b:
+        temp = a
+    elif b > c:
+        temp = b
+    else:
+        temp = c
+    print("最大值是：%d"%temp)
+
+findMax(8,2,6)
+
+
+8.2
+def FindMax(x,y,z):
+    if x > y:
+        if x > z:
+            print('最大值是:%d'%x)
+        else:
+            print('最大值是:%d'%z)
+    elif x > z:
+        if x > y:
+            print('最大值是:%d'%x)
+        else:
+            print('最大值是：%d'%y)
+    else:
+        if y > z:
+            print('最大值是：%d'%y)
+        else:
+            print('最大值是：%d'%z)
+
+FindMax(8,2,6)
