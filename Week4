@@ -1,4 +1,190 @@
-#第二周课堂练习
+1.
+class Animal:
+    name = "动物"
+
+    def call(self):
+        print("动物叫声...")
+
+    def take(self):
+        print("我是你们的父类")
+
+
+class Dog(Animal):
+    def call(self):
+        print("汪汪...")
+
+
+class Cat(Animal):
+    def call(self):
+        print("喵喵...")
+
+
+if __name__ == "__main__":
+    A = Animal()
+    A.call()
+    print(A.name)
+
+    dog = Dog()
+    dog.call()
+    dog.take()
+
+    cat = Cat()
+    cat.call()
+    cat.take()
+
+
+2.
+def add(a,b):
+    try:
+        a + b
+    except TypeError:
+        print("整数无法和空字符串相加")
+    else:
+        print(a + b)
+    finally:
+        print("执行Finally语句...")
+
+
+
+def sub(a,b):
+    try:
+        a - b
+    except TypeError:
+        print("整数无法和字符串相加")
+    else:
+        print(a - b)
+    finally:
+        print("执行Finally语句...")
+
+
+def mul(a,b):
+    try:
+        a * b
+    except TypeError:
+        print("整数无法和元祖相乘")
+    else:
+        print(a * b)
+    finally:
+        print("执行Finally语句...")
+
+
+def div(a,b):
+    try:
+        a / b
+    except ZeroDivisionError:
+        print("除数不能为0")
+    else:
+        print(a / b)
+    finally:
+        print("执行Finally语句...")
+
+
+if __name__ == "__main__":
+    add(1, '')
+    print("-----------------------")
+    sub(1, 'a')
+    print("-----------------------")
+    mul({},2)
+    print("-----------------------")
+    div(4, 2)
+    print("-----------------------")
+    
+    
+3.
+def Fibonacci(n):
+    if n == 1 or n == 2:
+        return 1
+    else:
+        return Fibonacci(n-1) + Fibonacci(n-2)
+
+
+def Fibonacci_Recursion(n):
+    result_list = []
+    for i in range(1, n + 1): result_list.append(Fibonacci(i))
+    return result_list
+
+print(Fibonacci_Recursion(5))
+
+
+
+4.
+def oddnumber():
+    lst = list([x for x in range(1, 101) if x % 2 == 1])
+    print(lst)
+
+if __name__ == "__main__":
+    oddnumber()
+    
+
+5.
+import json
+def write_file():
+    with open('write_data','w') as f:
+        f.write("The Zen of Python, by Tim Peters.\n")
+        f.write("Beautiful is better than ugly.\n")
+        f.write("Explicit is better than implicit.\n")
+        f.write("Simple is better than complex.\n")
+        f.write("Complex is better than complicated.\n")
+        f.write("Flat is better than nested.\n")
+        f.write("Sparse is better than dense.\n")
+        f.write("Readability counts.\n")
+        f.write("Special cases aren't special enough to break the rules.\n")
+        f.write("Although practicality beats purity.\n")
+        f.write("Errors should never pass silently.\n")
+        f.write("Unless explicitly silenced.\n")
+        f.write("In the face of ambiguity, refuse the temptation to guess.\n")
+        f.write("There should be one-- and preferably only one --obvious way to do it.\n")
+        f.write("Although that way may not be obvious at first unless you're Dutch.\n")
+        f.write("Now is better than never.\n")
+        f.write("Although never is often better than *right* now.\n")
+        f.write("If the implementation is hard to explain, it's a bad idea.\n")
+        f.write("If the implementation is easy to explain, it may be a good idea.\n")
+        f.write("Namespaces are one honking great idea -- let's do more of those!\n")
+        f.close()
+
+
+def read_file():
+    with open('C:write_data') as f:
+        readline = f.readlines()
+    word = []
+    for line in readline:
+        line = line.replace(',', '')
+        line = line.strip()
+        wo = line.split(' ')
+        word.extend(wo)
+    print(word)
+    lenth = len(word)
+    json_data = json.dumps(lenth)
+    with open('C:write_data','a') as f:
+        f.write(json_data + "\n")
+        f.close()
+    print("总共有",lenth,"个单词")
+    return word
+
+
+def clear_account(lists):
+    wokey = {}
+    wokey = wokey.fromkeys(lists)
+    word_1 = list(wokey.keys())
+    for i in word_1:
+        wokey[i] = lists.count(i)
+    json_account = json.dumps(wokey)
+    with open('C:write_data', 'a') as f:
+        f.write(json_account + "\n")
+        f.close()
+    print(wokey)
+    return wokey
+
+
+
+if __name__ == '__main__':
+    clear_account(read_file())
+    
+    
+    
+    
+
+                                          #第二周课堂练习
 1."Hello world".replace("l","*")
 
 
@@ -111,7 +297,7 @@ def guess_number():
         
         
         
-#第二周课后练习
+                                            #第二周课后练习
 1.
 for i in range(1, 10):
     for j in range(1, i + 1):
@@ -148,5 +334,224 @@ for i in range(11):
     
     
     
-#第三周课堂练习
+                                            #第三周课堂练习
 1.
+def get_year_of_hundred():
+    name = input('请输入您的名字：')
+    age = int(input('请输入您当前的年龄：'))
+    which_year = 100 + 2018 - age
+    print(f'{name} 在 {which_year} 年为 100 岁')
+    return which_year
+
+
+get_year_of_hundred()
+
+
+2.
+def is_odd_or_even():
+    number = int(input("请输入一个整数："))
+    if number % 2 == 1:
+        print("您输入的是奇数")
+    else:
+        print("您输入的是偶数")
+
+
+is_odd_or_even()
+
+
+3.
+def has_null_value(lst):
+    flag = True  # flag 为 True 时表示列表中有空对象
+    for x in lst:
+        if not bool(x):
+            break
+    else:
+        flag = False  # 表示列表中没有空对象
+    return flag
+
+
+#################################################
+def has_null_value(lst):
+    return list(filter(None, lst)) == lst
+
+
+#################################################
+def has_null_value(lst):
+    return all(lst)
+
+
+has_null_value(['', 0.0, 4, 'hello'])
+has_null_value([2.0, 4, 'hello'])
+
+
+4.
+def square(lst):
+    return [x ** 2 for x in lst]
+
+
+#################################
+def square(lst):
+    return list(map(lambda x: x ** 2, lst))
+
+
+square([1, 2, 3])
+
+
+5.
+from functools import reduce
+def my_sum(lst):
+    return reduce(lambda x, y: x + y, lst)
+
+my_sum([1, 2, 3, 4])
+
+
+6.
+def triple(lst):
+    return [x ** 3 for x in lst]
+
+
+triple([1, 2, 3])
+
+
+
+7.
+def elements_in_common(m, n):
+    s = set(m) & set(n)
+    return list(s)
+    
+elements_in_common([1, 2, 3], [2, 3, 4])
+#################################
+def checktwolist(list1, list2):
+    print(set(list1).intersection(list2))
+
+checktwolist([1,5,7,6,9],[1,2,3,4,5,6])
+   
+8.
+def FindMax(x,y,z):
+    if x > y:
+        if x > z:
+            print('最大值是:%d'%x)
+        else:
+            print('最大值是:%d'%z)
+    elif x > z:
+        if x > y:
+            print('最大值是:%d'%x)
+        else:
+            print('最大值是：%d'%y)
+    else:
+        if y > z:
+            print('最大值是：%d'%y)
+        else:
+            print('最大值是：%d'%z)
+
+FindMax(8,2,6)
+#################################
+def max_in_three(x, y, z):
+    from functools import reduce
+    return reduce(lambda x, y: x if x > y else y, (x, y, z))
+    
+    
+    
+    
+                                            #第三周课后练习
+1.
+def passwd_gen(p_len, lower_case=True, upper_case=True, number=True, special_char=True):
+    import string, random
+    lower_case_set = set(list(string.ascii_lowercase))
+    upper_case_set = set(list(string.ascii_uppercase))
+    number_set = set([x for x in range(10)])
+    special_char_set = set(list('~!@#$%^&*()'))
+    user_choice = set()
+    if lower_case:
+        user_choice = user_choice | lower_case_set
+    if upper_case:
+        user_choice = user_choice | upper_case_set
+    if number:
+        user_choice = user_choice | number_set
+    if special_char:
+        user_choice = user_choice | special_char_set
+    passwd_lst = random.sample(user_choice, p_len)
+    return ''.join(passwd_lst)
+
+
+2.
+def rightorleft(lst,a):
+    if a in lst:
+        if lst.index(a) < (len(lst)-1)/2:
+            print("该数在列表左半边")
+        elif lst.index(a) == (len(lst)-1)/2:
+            print("该数在列表中间位置")
+        else:
+            print("该数在列表右半边")
+    else:
+        print("列表中没有该数")
+
+rightorleft([1,2,3,5,6],3)
+rightorleft([1,2,3,4,5,6],3)
+rightorleft([1,2,3,4,5,6],4)
+#################################
+def check_existence_of_number(lst, number):
+    try:
+        idx = lst.index(number)
+        if idx <= len(lst) // 2:
+            return 'left'
+        else:
+            return 'right'
+    except ValueError:
+        return False
+
+
+3.
+def Text11():
+    num = [];
+    for i in range(2, 101):
+        for j in range(2, i):
+            if (i % j == 0):
+                break
+        else:
+            num.append(i)
+    print(num)
+
+Text11()
+#################################
+def is_prime(n):
+    if n == 1:
+        return False
+    elif n == 2:
+        return True
+    else:
+        for x in range(2, n):
+            if not n % x:
+                return False
+        return True
+
+list(filter(is_prime, range(1,101)))
+
+
+4.
+x, y = 10, 5
+
+def add(m, n):
+    return m + n
+
+def sub(m, n):
+    return m - n
+
+def mul(m, n):
+    return m * n
+
+def div(m, n):
+    try:
+        return m / n
+    except ZeroDivisionError:
+        print('除数不能为0')
+
+5.
+def findmin(lst):
+    print("min values element:",min(lst))
+
+findmin([5,6,8,1,2])
+#################################
+def get_min_value(lst):
+    from functools import reduce
+    return reduce(lambda x, y: x if x < y else y, lst)
