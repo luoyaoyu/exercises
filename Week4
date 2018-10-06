@@ -1,0 +1,114 @@
+#第二周课堂练习
+1."Hello world".replace("l","*")
+
+
+2.
+string = 'Good'.lower() + '!'
+string + string + string
+##############################
+string = 'Good'
+string = string.lower() + '!'
+string * 3
+
+
+3.
+'Fh1qoWe92QbvC'.swapcase()
+#用函数实现
+##############################
+def switch_case(string):
+    lst = []
+    for x in string:
+        if x.isalpha():
+           if x.islower():
+               x = x.upper()
+           else:
+               x = x.lower()
+        lst.append(x)
+    return ''.join(lst)
+    
+switch_case('Fh1qoWe92QbvC')
+
+
+4.
+import re
+  str = "Fh1qoWe92QbvC"
+  str2 = re.sub("\D","",str)
+  print(str2)
+##############################
+nums = []
+for c in 'Fh1qoWe92QbvC':
+    if c.isdigit():
+        nums.append(c)
+print(''.join(nums))
+
+
+5.
+lst = [2,0,3,6,9]
+  sorted(lst)
+##############################
+print(sorted(lst))
+
+
+6.
+def unique_list(lst):
+    seen = set()
+    seen_add = seen.add
+    return [x for x in lst if x not in seen and not seen_add(x)]
+##############################
+l = [2,3,1,2,4,3]
+  l = set(l)
+
+
+7.
+string = 'aasdebbcaa'
+d_counter = {}
+for c in set(string):
+    d_counter[c] = string.count(c)
+d_counter
+
+
+8.
+def str_counter(string):
+    counter = {'number': 0, 'letter': 0, 'space': 0, 'others': 0}
+    for c in list(string):
+        if c.isdigit():
+            counter['number'] += 1
+        elif c.isalpha():
+            counter['letter'] += 1
+        elif c.isspace():
+            counter['space'] += 1
+        else:
+            counter['others'] += 1
+    return counter
+print(str_counter('ue2u9n#283  x278$ 1D'))
+
+
+9.
+def check(str):
+    b = str.replace(' ','')
+    print(b)
+##############################
+def remove_spaces(string):
+    return ''.join([s for s in string if not s.isspace()])
+
+
+10.
+def guess_number():
+    import random
+    result = random.randint(0, 100)
+    guess_times = 5
+    while guess_times > 0:
+        guess = int(input('请输入一个数： '))
+        if result == guess:
+            print("恭喜你猜对了")
+            break
+        elif result > guess:
+            print("很遗憾，你猜小了")
+        elif result < guess:
+            print("很遗憾，你猜大了")
+        guess_times -= 1
+        
+        
+        
+        
+#第二周课后练习
