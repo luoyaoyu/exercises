@@ -1,0 +1,65 @@
+1
+def mul(x,y):
+    return x * y
+
+from functools import partial
+mul_p = partial(mul,2)
+print(mul_p(3))
+
+2
+def add(x,y,z):
+    return x + y + z
+
+add_p = partial(add,1)
+print(add_p(2,3))
+
+3
+def do(fn):
+    def wrapper():
+        import time
+        start = time.time()
+        rs = fn()
+        end = time.time()
+        print(end - start)
+        return rs
+    return wrapper
+
+@do
+def func():
+    print('start')
+    for x in range(1000):
+        print(x)
+
+func()
+
+4
+def try_div(x,y):
+    try:
+        rs = x / y
+        print(rs)
+    except:
+        print("除数不为0")
+    else:
+        return rs
+
+try_div(2,1)
+try_div(2,0)
+
+5
+def now_time(fn):
+    def wrapper():
+        import datetime
+        rs = fn()
+        print("Done")
+        print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        return rs
+    return wrapper
+
+
+@now_time
+def func():
+    print('start')
+    for x in range(10):
+        print(x)
+
+func()
