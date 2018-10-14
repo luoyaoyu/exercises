@@ -1,0 +1,47 @@
+1
+def wrap(fn):
+    def wrapper(str):
+        rs = fn(str.upper())
+        print(rs)
+        return rs
+    return wrapper
+
+@wrap
+def str_upper(str):
+    return str
+
+dstr_upper('asjdfasA')
+2
+ef read_file():
+    user_in = int(input("请输入读取长度:"))
+    x = 0
+    while x <= user_in:
+        if x == user_in:
+            with open('demo.py','r') as f:
+                str = f.read()
+                print (str[0:x])
+
+        x += 1
+
+
+read_file()
+3
+不会
+
+4
+n = (i for i in range(50) if i % 2 == 0)
+for i in n:
+    print(i)
+
+5
+import os
+from os.path import join, getsize
+
+for root, dirs, files in os.walk("c:\\"):
+    fsum = 0
+    for name in files:
+        fname = join(root, name)
+        fsize = getsize(fname)
+        fsum += fsize
+        print("%s => %d" % (fname, fsize))
+    print("%s => %d" % (root, fsize))
