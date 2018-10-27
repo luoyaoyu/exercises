@@ -1,65 +1,78 @@
 1
+from functools import partial
+
 def mul(x,y):
     return x * y
 
-from functools import partial
-mul_p = partial(mul,2)
-print(mul_p(3))
+result = partial(mul,2)
+result2 = result(10)
+print(result2)
+
 
 2
+from functools import partial
 def add(x,y,z):
     return x + y + z
 
 add_p = partial(add,1)
 print(add_p(2,3))
 
+
 3
-def do(fn):
-    def wrapper():
-        import time
-        start = time.time()
-        rs = fn()
-        end = time.time()
-        print(end - start)
+import time
+
+def do(func):
+    def wapper(*args,**kwargs):
+        start_time = time.time()
+        rs = func(*args,**kwargs)
+        ent_time = time.time()
+        print("总共耗时为：", ent_time - start_time)
         return rs
-    return wrapper
+    return wapper
 
 @do
-def func():
-    print('start')
-    for x in range(1000):
-        print(x)
+def add(x,y):
+    for i in range(10000):
+        print(i)
+    return x + y
 
-func()
+print(add(1,2))
+
 
 4
-def try_div(x,y):
-    try:
-        rs = x / y
-        print(rs)
-    except:
-        print("除数不为0")
-    else:
-        return rs
+def do(func):
+    def wapper(*args,**kwargs):
+        try:
+            for x in *args:
+                if x == 0:
+                    raise ZeroDivisionError
+        except ZeroDivisionError:
+            print("出错啦！")
+        else:
+            return div(x,y)
+        return func(*args, **kwargs)
+    return wapper
 
-try_div(2,1)
-try_div(2,0)
+
+@do
+def div(x,y):
+    return x / y
+
+print(div(1,0))
+
 
 5
-def now_time(fn):
-    def wrapper():
-        import datetime
-        rs = fn()
-        print("Done")
-        print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        return rs
-    return wrapper
+import datetime
+
+def do(fun):
+    def wapper():
+        print("Done :",datetime.datetime.now())
+        return fun()
+    return wapper
 
 
-@now_time
-def func():
-    print('start')
-    for x in range(10):
-        print(x)
+@do
+def prt():
+    print("Start...")
 
-func()
+prt()
