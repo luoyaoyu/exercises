@@ -1,0 +1,76 @@
+1
+from functools import partial
+
+def mul(x,y):
+    return x * y
+
+result = partial(mul,2)
+result2 = result(10)
+print(result2)
+
+
+2
+from functools import partial
+def add(x,y,z):
+    return x + y + z
+
+add_p = partial(add,1)
+print(add_p(2,3))
+
+
+3
+import time
+
+def do(func):
+    def wapper(*args,**kwargs):
+        start_time = time.time()
+        rs = func(*args,**kwargs)
+        ent_time = time.time()
+        print("总共耗时为：", ent_time - start_time)
+        return rs
+    return wapper
+
+@do
+def add(x,y):
+    for i in range(10000):
+        print(i)
+    return x + y
+
+print(add(1,2))
+
+
+4
+def timer2(func):
+	def Wrapper(*args,**akg):
+		try:
+			x=func(*args,**akg)
+		except Exception as e:
+			print(e)
+			return None
+		return x
+	return Wrapper
+
+@timer2
+def chu(*args,**akg):
+	sum1=args[0]**2
+	print(args)
+	for i in args:
+		sum1=sum1/i
+	return sum1
+
+
+5
+import datetime
+
+def do(fun):
+    def wapper():
+        print("Done :",datetime.datetime.now())
+        return fun()
+    return wapper
+
+
+@do
+def prt():
+    print("Start...")
+
+prt()
