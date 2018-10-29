@@ -40,25 +40,23 @@ print(add(1,2))
 
 
 4
-def do(func):
-    def wapper(*args,**kwargs):
-        try:
-            for x in *args:
-                if x == 0:
-                    raise ZeroDivisionError
-        except ZeroDivisionError:
-            print("出错啦！")
-        else:
-            return div(x,y)
-        return func(*args, **kwargs)
-    return wapper
+def timer2(func):
+	def Wrapper(*args,**akg):
+		try:
+			x=func(*args,**akg)
+		except Exception as e:
+			print(e)
+			return None
+		return x
+	return Wrapper
 
-
-@do
-def div(x,y):
-    return x / y
-
-print(div(1,0))
+@timer2
+def chu(*args,**akg):
+	sum1=args[0]**2
+	print(args)
+	for i in args:
+		sum1=sum1/i
+	return sum1
 
 
 5
