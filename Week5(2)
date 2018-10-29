@@ -1,47 +1,81 @@
-1
-def wrap(fn):
-    def wrapper(str):
-        rs = fn(str.upper())
-        print(rs)
-        return rs
-    return wrapper
+1.
+def timer4(func):
+	def Wrapper(*args,**akg):
+		print(type(args))
+		new_args=[]
+		for i in range(len(args)):
+			print(type(args[i]))
+			if type(args[i])==type("aa"):
+			    if not args[i].isupper():
+				    print(args[i])
+				    new_args.append(args[i].upper())
+			    else:
+				    print(args[i])
+				    new_args.append(args[i])
+		print(new_args)
+		x=func(*new_args,**akg)
+		return x
+	return Wrapper
 
-@wrap
-def str_upper(str):
-    return str
+@timer4
+def add2(x,y):
+	return x+y
 
-dstr_upper('asjdfasA')
-2
-ef read_file():
-    user_in = int(input("请输入读取长度:"))
-    x = 0
-    while x <= user_in:
-        if x == user_in:
-            with open('demo.py','r') as f:
-                str = f.read()
-                print (str[0:x])
-
-        x += 1
+add2("asdsad","ASDSADSA")
 
 
-read_file()
-3
-不会
 
-4
-n = (i for i in range(50) if i % 2 == 0)
-for i in n:
+2.
+def t1(path):
+	def t2(zijie):
+		path1=path
+		with open(path,'r') as f:
+			while True:
+				try:
+					t=f.read(zijie)
+				except Exception as e:
+					print(e)
+					break
+				yield t
+		print("½áÊøÁË!")
+	return t2
+
+path="C:/new1.txt"
+z=t1(path)
+x=z(2)
+x.send(None)
+
+
+
+3.
+def increment(id = 1):
+    while True:
+        yield id
+        id += 1
+
+
+g1 = increment()
+print(next(g1))
+print(next(g1))
+print(next(g1))
+
+
+
+4.
+g = (i for i in range(50) if i % 2 != 1)
+for i in g:
     print(i)
-
-5
+    
+ 
+ 
+5.
 import os
-from os.path import join, getsize
 
-for root, dirs, files in os.walk("c:\\"):
-    fsum = 0
-    for name in files:
-        fname = join(root, name)
-        fsize = getsize(fname)
-        fsum += fsize
-        print("%s => %d" % (fname, fsize))
-    print("%s => %d" % (root, fsize))
+
+def file_name(file_dir):
+    for root, dirs, files in os.walk(file_dir):
+        print(dirs)
+        print(files)
+
+
+file_name("C://")
