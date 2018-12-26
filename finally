@@ -62,46 +62,23 @@ import time#8
 
 
 6.
-    def getPassword():
-        mima=''
-        a=int(input("需要几个数字:"))
-        b=int(input("需要几个大写字母:"))
-        d=int(input("需要几个小写字母:"))
-        c=int(input("需要几个符号:"))
-        if(a==0 and b==0 and c==0 and d==0):
-            print("没有密码!")
-            return 0
-        if a>0:
-            for i in range(a):
-                l=random.randint(0,9)
-                mima+=str(l)
-        if b>0:
-            for i in range(b):
-                l=random.randint(65,90)
-                mima+=chr(l)
-        if d>0:
-            for i in range(d):
-                l=random.randint(97,122)
-                mima+=chr(l)
-        if c>0:
-            for i in range(c):
-                big_or_small=4
-                big_or_small=random.randint(0,3)
-                if big_or_small==0:
-                    l=random.randint(32,47)
-                if big_or_small==1:
-                    l=random.randint(58,64)
-                if big_or_small==2:
-                    l=random.randint(91,96)
-                if big_or_small==3:
-                    l=random.randint(123,126)
-                mima+=chr(l)
-        password=list(mima)
-        random.shuffle(password)
-        password=''.join(password)
-        return password
-    print(getPassword())
+       import random
+    import string
 
+    user_list = []
+
+    def login():
+        User_name = input("请您设置您的用户名：")
+        User_password = int(input("请您设置您想取几位数的密码："))
+
+        for i in range(User_password):
+            Your_pass = random.choice(string.ascii_letters + string.digits)
+            user_list.append(Your_pass)
+            Pass_result = "".join(user_list)
+
+        print(f"您设置的用户名为：{User_name}, 系统为您随机产生的密码为：{Pass_result}")
+
+    login()
 
 
 
@@ -115,21 +92,21 @@ import time#8
 
 
 8.
-import time
+        import time
 
-def do(func):
-    def wapper(*args,**kwargs):
-        start_time = time.time()
-        rs = func(*args,**kwargs)
-        ent_time = time.time()
-        print("总共耗时为：", ent_time - start_time)
-        return rs
-    return wapper
+        def do(func):
+            def wapper(*args,**kwargs):
+                start_time = time.time()
+                rs = func(*args,**kwargs)
+                ent_time = time.time()
+                print("总共耗时为：", ent_time - start_time)
+                return rs
+            return wapper
 
-@do
-def add(x,y):
-    for i in range(10000):
-        print(i)
-    return x + y
+        @do
+        def add(x,y):
+            for i in range(10000):
+                print(i)
+            return x + y
 
-print(add(1,2))
+        print(add(1,2))
