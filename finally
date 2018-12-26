@@ -115,15 +115,21 @@ import time#8
 
 
 8.
-    def whm(w):
-        def whl(*hr,**yyl):
-            a=time.time()
-            ll=w(*hr,**yyl)
-            [i for i in range(1000001)]
-            print(time.time()-a)
-            return ll
-        return whl
-    @whm
-    def wc(a,b,c):
-        return a*b*c
-    wc(100,200,300)
+import time
+
+def do(func):
+    def wapper(*args,**kwargs):
+        start_time = time.time()
+        rs = func(*args,**kwargs)
+        ent_time = time.time()
+        print("总共耗时为：", ent_time - start_time)
+        return rs
+    return wapper
+
+@do
+def add(x,y):
+    for i in range(10000):
+        print(i)
+    return x + y
+
+print(add(1,2))
