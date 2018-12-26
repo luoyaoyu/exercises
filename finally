@@ -1,0 +1,129 @@
+from functools import reduce#2
+import random#5
+from functools import partial#7
+import time#8
+
+
+1.
+    def triple(lst):
+        return [i*i*i for i in lst]
+    print(triple([1,2,3,4,5,6,7,8,9]))
+
+
+
+
+2.
+    def add(lst):
+        return reduce(lambda x,y:x+y,lst)
+    print(add(lst))
+
+
+
+
+3.
+    def reader():
+        f=''
+        for i in range(10001):
+            f+=str(i)
+            f+="\n"
+        with open("test.txt",'w+') as ff:
+            ff.write(f)
+        with open("test.txt") as f:
+            while 1:
+                aa=f.readline()
+                yield aa
+    a=reader()
+    for i in range(int(input())):
+        print(next(a),end="")
+
+
+
+
+4.
+    def han_null(n):
+        return n==False
+    def has_null_value(lst):
+        return list(filter(han_null,lst))
+    print(has_null_value([0,False,'0',8,0.0,[]]))
+
+
+
+
+5.
+    def fib(a):
+        return 1 if(a<=2) else (fib(a-1)+fib(a-2))
+    a=int(input())
+    for i in range(1,11):
+        if fib(i)<a:
+            print(fib(i))
+        else:
+            break
+
+
+
+6.
+    def getPassword():
+        mima=''
+        a=int(input("需要几个数字:"))
+        b=int(input("需要几个大写字母:"))
+        d=int(input("需要几个小写字母:"))
+        c=int(input("需要几个符号:"))
+        if(a==0 and b==0 and c==0 and d==0):
+            print("没有密码!")
+            return 0
+        if a>0:
+            for i in range(a):
+                l=random.randint(0,9)
+                mima+=str(l)
+        if b>0:
+            for i in range(b):
+                l=random.randint(65,90)
+                mima+=chr(l)
+        if d>0:
+            for i in range(d):
+                l=random.randint(97,122)
+                mima+=chr(l)
+        if c>0:
+            for i in range(c):
+                big_or_small=4
+                big_or_small=random.randint(0,3)
+                if big_or_small==0:
+                    l=random.randint(32,47)
+                if big_or_small==1:
+                    l=random.randint(58,64)
+                if big_or_small==2:
+                    l=random.randint(91,96)
+                if big_or_small==3:
+                    l=random.randint(123,126)
+                mima+=chr(l)
+        password=list(mima)
+        random.shuffle(password)
+        password=''.join(password)
+        return password
+    print(getPassword())
+
+
+
+
+7.
+    def mul_by_two(n):
+        f=partial(lambda x,y:x*y,2)
+        return f(n)
+    print(mul_by_two(100))
+
+
+
+
+8.
+    def whm(w):
+        def whl(*hr,**yyl):
+            a=time.time()
+            ll=w(*hr,**yyl)
+            [i for i in range(1000001)]
+            print(time.time()-a)
+            return ll
+        return whl
+    @whm
+    def wc(a,b,c):
+        return a*b*c
+    wc(100,200,300)
